@@ -1,0 +1,20 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  --theme-background-ultralight: #181616;
+  --theme-background-normal: #c5a9cc;
+  --theme-background-light: #e9dcec;
+  --theme-color-light: #6d5388;
+  --theme-color-normal: #665675;
+  --theme-color-dark: #43437c;
+  --theme-border-radius-smooth: 10px;
+}
+
+body {
+  max-width: 1024px;
+  margin: auto;
+  padding: 0 10px;
+  background-color: #0f0f0f;
+}
