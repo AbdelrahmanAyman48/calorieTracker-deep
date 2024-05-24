@@ -44,8 +44,15 @@ const setupDb = () => {
 
 setupDb();
 
-const domainWhiteList = JSON.parse(process.env.DOMAIN_WHITELIST);
-console.log(domainWhiteList);
+// Check and parse DOMAIN_WHITELIST environment variable
+let domainWhiteList;
+try {
+  domainWhiteList = JSON.parse(process.env.DOMAIN_WHITELIST || '["http://localhost:3000"]');
+  console.log("Domain whitelist:", domainWhiteList);
+} catch (error) {
+  console.error("Invalid DOMAIN_WHITELIST format:", error);
+  domainWhiteList = [];
+}
 
 // Allow receiving requests from React server
 const corsOptions = {
@@ -61,8 +68,9 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // Server start and endpoints
-app.listen(process.env.PORT, () => {
-  console.log(`Server running on port ${process.env.PORT}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
 
 /**
